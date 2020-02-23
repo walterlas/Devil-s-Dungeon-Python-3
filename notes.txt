@@ -1,0 +1,5 @@
+Devil's Dungeon
+
+2/23/2020 - This mostly works, although I'm sure there are a few bugs about the program flow. Also, 
+sometimes there are no adjacent rooms, which I'm sure isn't right. Anyway, it basiclly works.
+
