@@ -47,6 +47,9 @@ def clearScreen():
 	else:
 		_ = system('clear')
 	return
+def checkContentFlags(a,b):
+	c=roomContentFlags[a]*roomContentFlags[b]
+	return(c)
 	
 def setRooms():		# Lines 40-140
 	global adjacentRooms
@@ -87,10 +90,12 @@ def checkHazards():
 		print("Tremor!")
 		for i in range(1,20+1):
 			adjacentRooms[i]=0
-	if roomContentFlags[1]*roomContentFlags[12]==1 and rnd()<.4:
+#	if roomContentFlags[1]*roomContentFlags[12]==1 and rnd()<.4:
+		if checkContentFlags(1,12):
 		print("You have been cursed by a demon!")
 		playerSpeed=(.5*playerSpeed)
-	if roomContentFlags[9]*roomContentFlags[11]==1 and rnd()<.4:
+#	if roomContentFlags[9]*roomContentFlags[11]==1 and rnd()<.4:
+		if checkContentFlags(9,11)
 		print("You have been gassed!")
 		playerStrength=int(.5*playerStrength)
 	return
@@ -140,15 +145,18 @@ def showStatus():
 	return
 	
 def doDemons():
-	if (roomContentFlags[1]*roomContentFlags[12] == 1):
+#	if (roomContentFlags[1]*roomContentFlags[12] == 1):
+	if checkContentFlags(1,12):
 		print("Demons!")
 	return
 
 def doMonsters():
 	print(f"Monster's Speed: {monsterSpeed}  Strength: {monsterStrength}")
-	if (roomContentFlags[1]*roomContentFlags[12] == 1):
+#	if (roomContentFlags[1]*roomContentFlags[12] == 1):
+	if checkContentFlags(1,2):
 		print("Demons!")
-	if (roomContentFlags[9]*roomContentFlags[11] ==1):
+#	if (roomContentFlags[9]*roomContentFlags[11] ==1):
+	if checkContentFlags(9,11):
 		print("Poisonous Gas!")
 	return
 	
@@ -283,7 +291,8 @@ def getTreasure():
 	if treasure == 0:
 		return
 	roomGold=int(rnd()*treasure*playerLocation*playerDepth)+1
-	if (roomContentFlags[1]*roomContentFlags[12]==1) and rnd()<.4:
+#	if (roomContentFlags[1]*roomContentFlags[12]==1) and rnd()<.4:
+	if checkContentFlags(1,12) and rnd()<.4:
 		print("A demon got your gold!")
 		roomGold=0
 	else:
@@ -373,7 +382,8 @@ while gameLoop:
 		continue
 		
 	if (pm < 0):	# Go to next level down
-		if roomContentFlags[19] and roomContentFlags[13]:
+#		if roomContentFlags[19] and roomContentFlags[13]:
+		if checkContentFlags(19,13):
 			playerDepth = playerDepth + 1
 			monsterPresent = 0
 		else:
